@@ -2,30 +2,45 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 // To get the root element from the HTML document
-// JSX element, header
-const welcome = 'Welcome to 30 Days Of React'
-const title = 'Getting Started React'
-const subtitle = 'JavaScript Library'
-const author = {
-  firstName: 'Po Chai',
-  lastName: 'Wong',
+const ShowDate = (time) => {
+  const months = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ]
+
+  const month = months[time.getMonth()].slice(0, 3)
+  const year = time.getFullYear()
+  const date = time.getDate()
+  return ` ${month} ${date}, ${year}`
 }
-const date = 'Aug 23, 2023'
+
 
 // JSX element, header
-const Header = ()=> (
-  <header>
-    <div className='header-wrapper'>
-      <h1>{welcome}</h1>
-      <h2>{title}</h2>
-      <h3>{subtitle}</h3>
-      <p>
-        Instructor: {author.firstName} {author.lastName}
-      </p>
-      <small>Date: {date}</small>
-    </div>
-  </header>
-)
+const Header = (props) => {
+  return (
+    <header>
+      <div className='header-wrapper'>
+        <h1>{props.data.welcome}</h1>
+        <h2>{props.data.title}</h2>
+        <h3>{props.data.subtitle}</h3>
+        <p>
+          {props.data.author.firstName} {props.data.author.lastName}
+        </p>
+        <small>{ShowDate(props.data.date)}</small>
+      </div>
+    </header>
+  )
+}
 
 const numOne = 3
 const numTwo = 2
@@ -36,28 +51,25 @@ const result = (
   </p>
 )
 
-const yearBorn = 2000
-const currentYear = new Date().getFullYear()
-const age = currentYear - yearBorn
-const personAge = (
-  <p>
-    {' '}
-    {author.firstName} {author.lastName} is {age} years old
-  </p>
-)
 
 // JSX element, main
 const techs = ['HTML', 'CSS', 'JavaScript']
-const techsFormatted = techs.map((tech) => <li>{tech}</li>)
+
 
 const user = (
   <div>
     <h3>This is supposed to be an image.</h3>
   </div>
 )
-
+const ReactSkills = (props) => (
+  <ul>
+    {props.Skills.map((element) => 
+      <li key={element}>{element}</li>
+    )}
+  </ul>
+);
 // JSX element, main
-const Main = ()=> (
+const Main = (props)=> (
   <main>
     <div className='main-wrapper'>
       <p>
@@ -67,13 +79,16 @@ const Main = ()=> (
         </strong>
         :
       </p>
-      <ul>{techsFormatted}</ul>
-      {result}
-      {personAge}
-      {user}
+      <ReactSkills Skills={props.data.techs}/>
+      {props.data.result}
+      {props.data.personAge}
+      {props.data.user}
+      <Status status={props.data.personAge>=18}/>
     </div>
   </main>
 )
+
+const personAge = new Date().getFullYear()-2000
 
 const copyRight = 'Copyright 2020'
 
@@ -85,30 +100,47 @@ const Footer = ()=>(
     </div>
   </footer>
 )
+const UserInfoSkillItem = (props)=>(
+  <div className='user-skill-item'
+  id={props.skill.toLowerCase()}>{props.skill}
+  </div>
+)
 
-const User_info = ()=> (
+const Status = (props)=>{
+  let status =props.status?'Old enough to drive': "Too young to drive";
+  return <p className='status-content'> 
+  {status}
+  </p>
+}
+
+
+const UserInfo = ()=> (
   <div className='user-info-wrapper'>
 
   <div className='user-info-container'>
     <h2 className='user-info-title'>SKILLS</h2>
     <div className='user-skill-container'>
-      <div className='user-skill-item' id='html'>HTML</div>
-      <div className='user-skill-item' id='CSS'>CSS</div>
-      <div className='user-skill-item' id='python'>Python</div>
-      <div className='user-skill-item' id='django'>Django</div>
-      <div className='user-skill-item' id='pandas'>Pandas</div>
-      <div className='user-skill-item' id='mysql'>MySQL</div>
-      <div className='user-skill-item' id='react'>React</div>
-      <div className='user-skill-item' id='tensorflow'>Tensorflow</div>
-      <div className='user-skill-item' id='matplotlib'>Matplotlib</div>
-      <div className='user-skill-item' id='numpy'>Numpy</div>
+      <UserInfoSkillItem skill='HTML'/>
+      <UserInfoSkillItem skill='CSS'/>
+      <UserInfoSkillItem skill='Python'/>
+      <UserInfoSkillItem skill='Django'/>
+      <UserInfoSkillItem skill='Pandas'/>
+      <UserInfoSkillItem skill='MySQL'/>
+      <UserInfoSkillItem skill='React'/>
+      <UserInfoSkillItem skill='Tensorflow'/>
+      <UserInfoSkillItem skill='Matplotlib'/>
+      <UserInfoSkillItem skill='Numpy'/>
+      <UserInfoSkillItem skill='Scipy'/>
+      <UserInfoSkillItem skill='Seaborn'/>
+      
     </div>
+    
   </div>
 
   </div>
 )
-
-const Subscribe_form= ()=>(
+const Button = (props)=><button onClick={props.onClick}>{props.text}</button>
+const SubscribeForm= ()=>(
   <div className='subscribe-container'>
     <div className='subscribe-form'>
       <h2 className='subscribe-title'>SUBSCRIBE</h2>
@@ -130,10 +162,26 @@ const Subscribe_form= ()=>(
 
 const App = ()=>(
   <div className='app'>
-    <Header/>
-    <Main/>
-    <User_info/>
-    <Subscribe_form/>
+    <Header data={
+      {welcome:'Welcome to 30 Days of React',
+      title:'Gettting Started React',
+      subtitle:'JavaScript Library',
+      author:{
+        firstName:'Po Chai',
+        lastName:'Wong',
+      },
+      date: new Date(),}
+    }/>
+    <Main data={
+      {
+        techs:techs,
+        results:result,
+        user:user,
+        personAge:personAge,
+      }
+    }/>
+    <UserInfo/>
+    <SubscribeForm/>
     <Footer/>
   </div>
 )
