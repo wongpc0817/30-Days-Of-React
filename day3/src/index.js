@@ -1,17 +1,141 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+// index.js
+import React from 'react'
+import ReactDOM from 'react-dom'
+// To get the root element from the HTML document
+// JSX element, header
+const welcome = 'Welcome to 30 Days Of React'
+const title = 'Getting Started React'
+const subtitle = 'JavaScript Library'
+const author = {
+  firstName: 'Asabeneh',
+  lastName: 'Yetayeh',
+}
+const date = 'Oct 2, 2020'
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+// JSX element, header
+const header = (
+  <header>
+    <div className='header-wrapper'>
+      <h1>{welcome}</h1>
+      <h2>{title}</h2>
+      <h3>{subtitle}</h3>
+      <p>
+        Instructor: {author.firstName} {author.lastName}
+      </p>
+      <small>Date: {date}</small>
+    </div>
+  </header>
+)
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+const numOne = 3
+const numTwo = 2
+
+const result = (
+  <p>
+    {numOne} + {numTwo} = {numOne + numTwo}
+  </p>
+)
+
+const yearBorn = 1820
+const currentYear = new Date().getFullYear()
+const age = currentYear - yearBorn
+const personAge = (
+  <p>
+    {' '}
+    {author.firstName} {author.lastName} is {age} years old
+  </p>
+)
+
+// JSX element, main
+const techs = ['HTML', 'CSS', 'JavaScript']
+const techsFormatted = techs.map((tech) => <li>{tech}</li>)
+
+const user = (
+  <div>
+    <h3>This is supposed to be an image.</h3>
+  </div>
+)
+
+// JSX element, main
+const main = (
+  <main>
+    <div className='main-wrapper'>
+      <p>
+        Prerequisite to get started{' '}
+        <strong>
+          <em>react.js</em>
+        </strong>
+        :
+      </p>
+      <ul>{techsFormatted}</ul>
+      {result}
+      {personAge}
+      {user}
+    </div>
+  </main>
+)
+
+const copyRight = 'Copyright 2020'
+
+// JSX element, footer
+const footer = (
+  <footer>
+    <div className='footer-wrapper'>
+      <p>{copyRight}</p>
+    </div>
+  </footer>
+)
+
+const user_info = (
+  <div className='user-info-container'>
+    <h2 className='user-info-title'>SKILLS</h2>
+    <div className='user-skill-container'>
+      <div className='user-skill-item' id='html'>HTML</div>
+      <div className='user-skill-item' id='CSS'>CSS</div>
+      <div className='user-skill-item' id='python'>Python</div>
+      <div className='user-skill-item' id='django'>Django</div>
+      <div className='user-skill-item' id='pandas'>Pandas</div>
+      <div className='user-skill-item' id='mysql'>MySQL</div>
+      <div className='user-skill-item' id='react'>React</div>
+      <div className='user-skill-item' id='tensorflow'>Tensorflow</div>
+      <div className='user-skill-item' id='matplotlib'>Matplotlib</div>
+      <div className='user-skill-item' id='numpy'>Numpy</div>
+    </div>
+
+  </div>
+)
+
+const subscribe_form=(
+  <div className='subscribe-container'>
+    <div className='subscribe-form'>
+      <h2 className='subscribe-title'>SUBSCRIBE</h2>
+      <h4 className='subscribe-content'>Sign up with your email address to receive news and updates.</h4>
+      <div className='form-content'>
+        <input type='text' className='input-firstname' name='firstname' id='firstname' placeholder='First Name'/>
+        <input type='text' name='lastname' id='lastname' placeholder='Last Name' className='input-lastname' />
+        <input className='input-email' type='text' name='email' id='email' placeholder='Email'
+        />
+      </div>
+      <button className='subscribe-button'
+      type='submit'>
+        Subscribe
+      </button>
+
+    </div>
+  </div>
+)
+
+// JSX element, app
+const app = (
+  <div className='app'>
+    {header}
+    {main}
+    {user_info}
+    {footer}
+    {subscribe_form}
+  </div>
+)
+
+const rootElement = document.getElementById('root')
+// we render the JSX element using the ReactDOM package
+ReactDOM.render(app, rootElement)
