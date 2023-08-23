@@ -7,13 +7,13 @@ const welcome = 'Welcome to 30 Days Of React'
 const title = 'Getting Started React'
 const subtitle = 'JavaScript Library'
 const author = {
-  firstName: 'Asabeneh',
-  lastName: 'Yetayeh',
+  firstName: 'Po Chai',
+  lastName: 'Wong',
 }
-const date = 'Oct 2, 2020'
+const date = 'Aug 23, 2023'
 
 // JSX element, header
-const header = (
+const Header = ()=> (
   <header>
     <div className='header-wrapper'>
       <h1>{welcome}</h1>
@@ -36,7 +36,7 @@ const result = (
   </p>
 )
 
-const yearBorn = 1820
+const yearBorn = 2000
 const currentYear = new Date().getFullYear()
 const age = currentYear - yearBorn
 const personAge = (
@@ -57,7 +57,7 @@ const user = (
 )
 
 // JSX element, main
-const main = (
+const Main = ()=> (
   <main>
     <div className='main-wrapper'>
       <p>
@@ -78,7 +78,7 @@ const main = (
 const copyRight = 'Copyright 2020'
 
 // JSX element, footer
-const footer = (
+const Footer = ()=>(
   <footer>
     <div className='footer-wrapper'>
       <p>{copyRight}</p>
@@ -86,7 +86,9 @@ const footer = (
   </footer>
 )
 
-const user_info = (
+const User_info = ()=> (
+  <div className='user-info-wrapper'>
+
   <div className='user-info-container'>
     <h2 className='user-info-title'>SKILLS</h2>
     <div className='user-skill-container'>
@@ -101,11 +103,12 @@ const user_info = (
       <div className='user-skill-item' id='matplotlib'>Matplotlib</div>
       <div className='user-skill-item' id='numpy'>Numpy</div>
     </div>
+  </div>
 
   </div>
 )
 
-const subscribe_form=(
+const Subscribe_form= ()=>(
   <div className='subscribe-container'>
     <div className='subscribe-form'>
       <h2 className='subscribe-title'>SUBSCRIBE</h2>
@@ -125,17 +128,16 @@ const subscribe_form=(
   </div>
 )
 
-// JSX element, app
-const app = (
+const App = ()=>(
   <div className='app'>
-    {header}
-    {main}
-    {user_info}
-    {footer}
-    {subscribe_form}
+    <Header/>
+    <Main/>
+    <User_info/>
+    <Subscribe_form/>
+    <Footer/>
   </div>
 )
 
 const rootElement = document.getElementById('root')
 // we render the JSX element using the ReactDOM package
-ReactDOM.render(app, rootElement)
+ReactDOM.render(<App/>, rootElement)
