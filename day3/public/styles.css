@@ -1,0 +1,282 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+:root {
+--root-backgroundcolor: rgba(19, 163, 247, 0.464);
+}
+
+html,
+body {
+height: 100%;
+width: 100%;
+line-height: 1.5;
+font-family: 'Montserrat';
+font-weight: 300;
+color: black;
+background-color:var(--root-backgroundcolor);
+}
+
+.root {
+/* min-height: 100%; */
+position: relative;
+display: flex;
+flex-direction: column;
+}
+
+.header-wrapper,
+.main-wrapper,
+.footer-wrapper {
+width: 100%;
+margin: auto;
+}
+
+.header-wrapper,
+.main-wrapper {
+padding: 10px;
+margin: 2px auto;
+}
+
+h1 {
+font-size: 70px;
+font-weight: 300;
+}
+
+h2,
+h3 {
+font-weight: 300;
+}
+
+header {
+padding: 10px;
+}
+
+main {
+padding: 10px;
+padding-bottom: 60px;
+background-color: white;
+}
+
+ul {
+margin-left: 15px;
+}
+
+ul li {
+list-style: none;
+}
+
+footer {
+position: relative;
+bottom: 0;
+width: 100%;
+height: 60px;
+}
+
+.footer-wrapper {
+font-weight: 400;
+text-align: center;
+line-height: 60px;
+display: flex;
+justify-content: center;
+align-items: center;
+padding: 10px;
+
+}
+.subscribe-container {
+padding:10px;
+display: flex;
+}
+.subscribe-form {
+margin:10px;
+padding:30px;
+border-radius: 20px;
+background-color: rgb(194, 239, 247);
+justify-content: center;
+align-items: center;
+width: 100%;
+}
+
+.subscribe-form,
+.subscribe-title,
+.subscribe-content {
+display: flex;
+flex-direction: column;
+align-items: center;
+width: 100%;
+}
+
+.subscribe-title {
+padding:0 0 30px 0;
+}
+.form-content {
+display: flex;
+flex-direction: row;
+align-items: stretch;
+padding: 10px;
+}
+.form-content input[type='text'] {
+border-radius: 5px;
+height: 40px;
+padding: 10px;
+border: none;
+margin: 3px;
+}
+.subscribe-form button {
+width: 100%;
+border-radius: 5px;
+padding: 10px;
+height: 40px;
+width: 60%;
+border: none;
+background-color: rgb(233, 122, 136);
+color: white;
+}
+.user-info-wrapper {
+display: flex;
+background-color: white;
+}
+.user-info-container {
+border-radius: 15px;
+display: flex;
+flex-direction: column;
+padding: 15px;
+width: 100%;
+margin: 10px;
+background-color: rgb(188, 241, 239);
+border: none;
+}
+
+.user-info-title {
+margin:10px;
+}
+.user-skill-item {
+display: inline-flex;
+border-radius: 10px;
+background-color: rgb(61, 216, 195);
+color: white;
+padding: 5px 10px 5px 10px;
+align-items: center;
+text-align: center;
+margin: 5px;
+}
+.number-generator-wrapper {
+padding: 20px;
+display: flex;
+flex-direction: column ;
+background-color: white;
+align-items: center;
+justify-content: center;
+color:rgba(5, 195, 90, 0.774) ;
+}
+.number-generator-container{
+/* border:black solid 2px; */
+justify-content: center;
+display: grid;
+width: 80%;
+gap: 1px;
+padding: 1px;
+grid-template-columns: repeat(8,12.5%);
+}
+.number-generator-title {
+color:black;
+font-size: 50px;
+font-weight: 500;
+}
+.number-generator-subheading {
+color: black;
+font-weight: 300;
+margin:0 0 10px 0;
+}
+.number-generator-block::before {
+content: "";
+display: block;
+padding-top: 100%;
+
+}
+.number-generator-block {
+position: relative;
+display: flex;
+justify-content: center;
+align-items: center;
+color: white;
+margin: 1px;
+font-size: 25px;
+}
+.world-population-wrapper {
+    display: flex;
+    background-color: white;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 20px;
+}
+.world-population-wrapper h1{
+    font-size: 50px;
+    font-weight: 500;
+}
+.world-population-wrapper h3{
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.world-population-container {
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.world-population-barchart {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: relative;
+    align-items: center;
+}
+.country-bar-plot {
+    gap: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    margin: 2px;
+}
+
+.country-bar-plot-population, 
+.country-bar-plot-name {
+    font-size:15px;
+    font-weight: 500;
+    display: flex;
+    height: 30px;
+}
+.country-bar-plot-population{
+    display: flex;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    /* justify-content: start; */
+    align-items:center;
+}
+.country-bar-plot-name {
+    align-items: center;
+    /* justify-content: center; */
+    padding-left:10px;
+    width: 20%;
+}
+
+.country-bar-plot-bar-wrapper {
+    display: flex;
+    height: 30px;
+    width:60%;
+    align-items: center;
+    justify-content: initial;
+}
+.country-bar-plot-bar {
+    padding: 0 0 0 5px;
+    display: block;
+    height: 30px;
+    width: 60%; 
+    background-color: orange;
+    border-radius: 5px;
+}

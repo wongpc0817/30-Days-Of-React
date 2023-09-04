@@ -8,6 +8,10 @@ import { Footer } from './components/footer';
 import { UserInfo } from './components/userinfo';
 import {NumberGenerator} from './components/number_generator';
 import { SubscribeForm } from './components/subscribe';
+import { WorldPopulation } from './components/world_population';
+
+
+
 const App = ()=>(
   <div className='app'>
     <Header data={
@@ -33,6 +37,7 @@ const App = ()=>(
     }/>
     <UserInfo/>
     <NumberGenerator/>
+    <WorldPopulation/>
     <SubscribeForm/>
     <Footer/>
   </div>
